@@ -109,7 +109,7 @@
                 }
             }
             
-            // ===== GOOGLE COMMANDS (English & Hindi) =====
+           
             else if (lowerCommand.includes('google') || lowerCommand.includes('गूगल') || 
                      lowerCommand.includes('search kar')) {
                 window.open('https://www.google.com', '_blank');
@@ -122,7 +122,7 @@
                 }
             }
             
-            // ===== STOP COMMAND =====
+            
             else if (lowerCommand.includes('stop') || lowerCommand.includes('band') || 
                      lowerCommand.includes('रुक')) {
                 response = 'Stopping voice recognition. Click the button to start again.';
@@ -134,7 +134,7 @@
                 response = "I didn't understand that command. Please try again or check available commands.";
             }
 
-            // Display and speak the response
+           
             if (response) {
                 addJarvisMessage(response);
                 speak(response, responseLang);
@@ -164,22 +164,18 @@
             }, 500);
         };
 
-        /**
-         * Called when speech recognition ends
-         */
+       
         recognition.onend = function() {
             isListening = false;
             micButton.classList.remove('active');
             
-            // Only update status if not already showing another message
+            
             if (status.textContent.includes('Listening')) {
                 updateStatus('Click the button and speak a command', false);
             }
         };
 
-        /**
-         * Called when speech recognition encounters an error
-         */
+       
         recognition.onerror = function(event) {
             isListening = false;
             micButton.classList.remove('active');
@@ -204,20 +200,14 @@
             addJarvisMessage(errorMessage);
         };
 
-        // ============================================
-        // MICROPHONE BUTTON CLICK HANDLER
-        // ============================================
-        
-        /**
-         * Start/stop voice recognition when button is clicked
-         */
+     
         micButton.addEventListener('click', function() {
             if (isListening) {
-                // Stop recognition if already listening
+                
                 recognition.stop();
                 updateStatus('Stopped listening', false);
             } else {
-                // Start recognition
+            
                 try {
                     recognition.start();
                 } catch (error) {
@@ -227,9 +217,7 @@
             }
         });
 
-        /**
-         * Stop listening function
-         */
+      
         function stopListening() {
             if (isListening) {
                 recognition.stop();
@@ -237,13 +225,7 @@
             updateStatus('Voice recognition stopped', false);
         }
 
-        // ============================================
-        // KEYBOARD SHORTCUT (OPTIONAL)
-        // ============================================
-        
-        /**
-         * Press SPACE key to toggle microphone
-         */
+      
         document.addEventListener('keydown', function(event) {
             if (event.code === 'Space' && event.target === document.body) {
                 event.preventDefault();
@@ -251,15 +233,11 @@
             }
         });
 
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-        
-        // Welcome message on page load
+       
         console.log('%c🤖 JARVIS AI Assistant Initialized', 'color: #00d4ff; font-size: 20px; font-weight: bold;');
         console.log('%cPress the microphone button or SPACE key to start', 'color: #8a2be2; font-size: 14px;');
         
-        // Speak welcome message
+      
         setTimeout(() => {
             speak('Systems online. Ready to assist you, sir.');
         }, 1000);
