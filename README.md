@@ -21,13 +21,3 @@
 
 ## 📂 Files
 
-## ☁️ Deploy
-- **Netlify**: Drag folder → Live in 30s
-- **GitHub Pages**: Push → Auto-deploy
-
-## 🔍 Browser Support
-| Browser | Status |
-|---------|--------|
-| Chrome/Edge | ✅ Full |
-| Firefox | ⚠️ Partial |
-| Safari | ❌ Limited |
